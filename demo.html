@@ -13,6 +13,8 @@ body {font-size:16px;}
 </style>
 <body>
 
+<script src="js/modernizr.js"></script>
+<script src="js/init.js"></script>
 <!-- Sidebar/menu -->
 <nav class="w3-sidebar w3-red w3-collapse w3-top w3-large w3-padding" style="z-index:3;width:300px;font-weight:bold;" id="mySidebar"><br>
   <a href="javascript:void(0)" onclick="w3_close()" class="w3-button w3-hide-large w3-display-topleft" style="width:100%;font-size:22px">Close Menu</a>
@@ -42,7 +44,7 @@ body {font-size:16px;}
   <!-- Header -->
   <div class="w3-container" style="margin-top:80px" id="showcase">
     <h1 class="w3-jumbo"><b>Grocery store proximity</b></h1>
-    <h1 class="w3-large w3-text-red"><b>Exploring proximity of stores within walking and cycling distances of low-income neighbourhoods.</b></h1>
+    <h1 class="w3-large w3-text-red"><b>Exploring proximity of stores within walking distances of low-income neighbourhoods.</b></h1>
     <hr style="width:50px;border:5px solid red" class="w3-round">
   </div>
   
@@ -74,7 +76,7 @@ body {font-size:16px;}
   <div class="w3-container" id="demo" style="margin-top:75px">
     <h1 class="w3-xxxlarge w3-text-red"><b>Interactive maps</b></h1>
     <hr style="width:50px;border:5px solid red" class="w3-round">
-    <p>Two cities, Brantford and Waterloo, have been analyzed for proof of concept, but the methodology can be applied to most Canadian cities, provided a valid street network dataset can be obtained.
+    <p>Two cities, Brampton and Waterloo, have been analyzed for proof of concept, but the methodology can be applied to most Canadian cities, provided a valid street network dataset can be obtained. Click on one of the corresponding images below to access the interactive walkability maps.
     </p>
   </div>
 
@@ -94,25 +96,9 @@ body {font-size:16px;}
   
   <!-- Contact -->
   <div class="w3-container" id="contact" style="margin-top:75px">
-    <h1 class="w3-xxxlarge w3-text-red"><b>Contact.</b></h1>
+    <h1 class="w3-xxxlarge w3-text-red"><b>Contact</b></h1>
     <hr style="width:50px;border:5px solid red" class="w3-round">
-    <p>If you would like this analysis done on your city, or more information on this analysis, please contact me so we can discuss implementation for your region of interest.</p>
-    <form action="/action_page.php" target="_blank">
-      <div class="w3-section">
-        <label>Name</label>
-        <input class="w3-input w3-border" type="text" name="Name" required>
-      </div>
-      <div class="w3-section">
-        <label>Email</label>
-        <input class="w3-input w3-border" type="text" name="Email" required>
-      </div>
-      <div class="w3-section">
-        <label>Message</label>
-        <input class="w3-input w3-border" type="text" name="Message" required>
-      </div>
-      <button type="submit" class="w3-button w3-block w3-padding-large w3-red w3-margin-bottom">Send Message</button>
-    </form>  
-  </div>
+    <p>If you would like this analysis done on your city, or more information on this analysis, please <a href='mailto:alexander.mcvittie@gmail.com'>contact me</a> so we can discuss implementation for your region of interest.</p>
 
 <!-- End page content -->
 </div>
@@ -139,6 +125,43 @@ function onClick(element) {
   var captionText = document.getElementById("caption");
   captionText.innerHTML = element.alt;
 }
+/*----------------------------------------------------*/
+/*      contact form
+------------------------------------------------------*/
+
+   $('form#contactForm button.submit').click(function() {
+
+      var contactName = $('#contactForm #contactName').val();
+      var contactEmail = $('#contactForm #contactEmail').val();
+      var contactSubject = "New message about grocery store accessibility!";
+      var contactMessage = $('#contactForm #contactMessage').val();
+
+      var data = 'contactName=' + contactName + '&contactEmail=' + contactEmail +
+               '&contactSubject=' + contactSubject + '&contactMessage=' + contactMessage;
+
+      $.ajax({
+
+              type: "POST",
+              url: "inc/sendEmail.php",
+              data: data,
+              success: function(msg) {
+
+            // Message was sent
+            if (msg == 'OK') {
+            }
+            // There was an error
+            else {
+
+            }
+
+              }
+
+      });
+      return false;
+   });
+
+
+
 </script>
 
 </body>
