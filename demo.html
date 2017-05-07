@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+<title>Low income walkability</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="css/css.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins">
+<style>
+body,h1,h2,h3,h4,h5 {font-family: "Poppins", sans-serif}
+body {font-size:16px;}
+.w3-half img{margin-bottom:-6px;margin-top:16px;opacity:0.8;cursor:pointer}
+.w3-half img:hover{opacity:1}
+</style>
+<body>
+
+<!-- Sidebar/menu -->
+<nav class="w3-sidebar w3-red w3-collapse w3-top w3-large w3-padding" style="z-index:3;width:300px;font-weight:bold;" id="mySidebar"><br>
+  <a href="javascript:void(0)" onclick="w3_close()" class="w3-button w3-hide-large w3-display-topleft" style="width:100%;font-size:22px">Close Menu</a>
+  <div class="w3-container">
+    <h3 class="w3-padding-64"><b>Alex McVittie</h3>
+  </div>
+  <div class="w3-bar-block">
+    <a href="#" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Home</a> 
+    <a href="#introduction" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Introduction</a> 
+    <a href="#demo" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Maps</a> 
+    <a href="#contact" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Contact</a>
+  </div>
+</nav>
+
+<!-- Top menu on small screens -->
+<header class="w3-container w3-top w3-hide-large w3-red w3-xlarge w3-padding">
+  <a href="javascript:void(0)" class="w3-button w3-red w3-margin-right" onclick="w3_open()">☰</a>
+  <span>Alex McVittie</span>
+</header>
+
+<!-- Overlay effect when opening sidebar on small screens -->
+<div class="w3-overlay w3-hide-large" onclick="w3_close()" style="cursor:pointer" title="close side menu" id="myOverlay"></div>
+
+<!-- !PAGE CONTENT! -->
+<div class="w3-main" style="margin-left:340px;margin-right:40px">
+
+  <!-- Header -->
+  <div class="w3-container" style="margin-top:80px" id="showcase">
+    <h1 class="w3-jumbo"><b>Grocery store proximity</b></h1>
+    <h1 class="w3-large w3-text-red"><b>Exploring proximity of stores within walking and cycling distances of low-income neighbourhoods.</b></h1>
+    <hr style="width:50px;border:5px solid red" class="w3-round">
+  </div>
+  
+
+
+  <!-- Modal for full size images on click-->
+  <div id="modal01" class="w3-modal w3-black" style="padding-top:0" onclick="this.style.display='none'">
+    <span class="w3-button w3-black w3-xxlarge w3-display-topright">×</span>
+    <div class="w3-modal-content w3-animate-zoom w3-center w3-transparent w3-padding-64">
+      <img id="img01" class="w3-image">
+      <p id="caption"></p>
+    </div>
+  </div>
+
+  <!-- Introduction -->
+  <div class="w3-container" id="introduction" style="margin-top:75px">
+    <h1 class="w3-xxxlarge w3-text-red"><b>Introduction</b></h1>
+    <hr style="width:50px;border:5px solid red" class="w3-round">
+    <p>Grocery stores are a regularily accessed and necessary amenity, requiring multiple trips to and from them per month. Individuals with access to a vehicle can travel to and from any grocery store in a city with ease. However, lower income individuals often do not have the same privilege of having a motor vehicle to get around the city, instead having to rely on using a bicycle or walking.</p> 
+    <p>
+    This geospatial tool has been developed to visualize neighbourhoods of primarily lower income that are not within easy walking or cycling distance of grocery stores. To help aid those without vehicular access for groceries, this tool could be utilized to create a community food delivery system could be deployed by existing local food delivery services. By delivering in bulk to multiple residences in a community, this could minimize delivery fees as opposed to existing grocery delivery companies which often do not operate in bulk in neighbourhoods.
+    </p>
+    <p>
+    The data displayed contains only neighbourhoods where the population within the neighbourhood is comprised of more than 40% of the residents earning under $30,000 per year, the defined low-income value by Statistics Canada. The neighbourhoods are classified on a gradient colour ramp based on the neighbourhoods proximity to grocery stores by walking. A short walk (< 5 minutes) would be coloured green, and as the walk time increases, the colour becomes closer to red.
+    </p>
+  </div>
+  
+  <!-- Designers -->
+  <div class="w3-container" id="demo" style="margin-top:75px">
+    <h1 class="w3-xxxlarge w3-text-red"><b>Interactive maps</b></h1>
+    <hr style="width:50px;border:5px solid red" class="w3-round">
+    <p>Two cities, Brantford and Waterloo, have been analyzed for proof of concept, but the methodology can be applied to most Canadian cities, provided a valid street network dataset can be obtained.
+    </p>
+  </div>
+
+    <!-- Photo grid (modal) -->
+  <div class="w3-row-padding">
+    <div class="w3-half">
+      <img src="img/brampton_lowincome.png" style="width:100%" onclick="location.href='webmaps/brampton/index.html';" alt="Map showing areas of low income in Brampton.">
+    </div>
+
+    <div class="w3-half">
+      
+      <img src="img/waterloo_lowincome.png" style="width:100%" onclick="location.href='webmaps/waterloo/index.html';"  alt="Map showing areas of low income in Waterloo.">
+    </div>
+  </div>
+
+  
+  
+  <!-- Contact -->
+  <div class="w3-container" id="contact" style="margin-top:75px">
+    <h1 class="w3-xxxlarge w3-text-red"><b>Contact.</b></h1>
+    <hr style="width:50px;border:5px solid red" class="w3-round">
+    <p>If you would like this analysis done on your city, or more information on this analysis, please contact me so we can discuss implementation for your region of interest.</p>
+    <form action="/action_page.php" target="_blank">
+      <div class="w3-section">
+        <label>Name</label>
+        <input class="w3-input w3-border" type="text" name="Name" required>
+      </div>
+      <div class="w3-section">
+        <label>Email</label>
+        <input class="w3-input w3-border" type="text" name="Email" required>
+      </div>
+      <div class="w3-section">
+        <label>Message</label>
+        <input class="w3-input w3-border" type="text" name="Message" required>
+      </div>
+      <button type="submit" class="w3-button w3-block w3-padding-large w3-red w3-margin-bottom">Send Message</button>
+    </form>  
+  </div>
+
+<!-- End page content -->
+</div>
+
+<!-- W3.CSS Container -->
+<div class="w3-light-grey w3-container w3-padding-32" style="margin-top:75px;padding-right:58px"><p class="w3-right"> Created for the 2017 Equithon at uWaterloo.</a></p></div>
+
+<script>
+// Script to open and close sidebar
+function w3_open() {
+    document.getElementById("mySidebar").style.display = "block";
+    document.getElementById("myOverlay").style.display = "block";
+}
+ 
+function w3_close() {
+    document.getElementById("mySidebar").style.display = "none";
+    document.getElementById("myOverlay").style.display = "none";
+}
+
+// Modal Image Gallery
+function onClick(element) {
+  document.getElementById("img01").src = element.src;
+  document.getElementById("modal01").style.display = "block";
+  var captionText = document.getElementById("caption");
+  captionText.innerHTML = element.alt;
+}
+</script>
+
+</body>
+</html>
